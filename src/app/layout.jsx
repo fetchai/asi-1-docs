@@ -15,11 +15,11 @@ export const metadata = {
   title: {
     template: '%s - Nextra'
   },
-  description: 'uAgents.ai/docs',
-  applicationName: 'uAgents.ai/docs',
+  description: 'ASI1/docs',
+  applicationName: 'ASI1/docs',
   generator: 'Next.js',
   appleWebApp: {
-    title: 'uAgents Docs'
+    title: 'ASI1 Docs'
   },
   other: {
     'msapplication-TileImage': '/ms-icon-144x144.png',
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }) {
     <Navbar
       logo={
         <div>
-          <b>uAgents.ai/docs</b>{' '}
+          <b>ASI1/docs</b>{' '}
         </div>
       }
       chatLink="https://discord.com/invite/fetchai"

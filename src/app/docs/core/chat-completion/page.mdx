@@ -1,0 +1,243 @@
+# Chat completion example
+A very simple example of how to get a chat completion with the asi1-mini model.
+
+## Code
+
+```py copy filename="demo.py"
+
+import requests
+import json
+
+url = "https://api.asi1.ai/v1/chat/completions"
+
+payload = json.dumps({
+  "model": "asi1-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hi, tell me about giraffes"
+    }
+  ],
+  "temperature": 0,
+  "stream": True,
+  "max_tokens": 0
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer your_api_key'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+```
+
+You can run this by typing `python demo.py`. You may need to install requests library to your environment for this to work, you can do that with `pip install requests`.
+
+## Output
+
+
+```py copy
+data: {"id":"id_comqjiusZjAoyuXlh","object":"chat.completion.chunk","model":"asi1-mini","choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null,"stop_reason":null}],"executable_data":[],"usage":null}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"init_thought":true}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":"\nThe user has asked"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" about giraffes"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":", which indicates they"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" are likely seeking general"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" information on this animal"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":". I should provide"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" an organized response that"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" includes key details such"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" as their physical characteristics"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":", habitat, behavior"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":", diet, and"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" any unique traits."}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" I'll aim for"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" a concise yet informative"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"role":"assistant","delta":{"role":"assistant","content":""}}],"thought":" explanation while ensuring accuracy"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","choices":[{"delta":{"role":"assistant","content":""}}],"thought":".\n"}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580071837,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"\n\nGiraffes"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580071935,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" are fascinating creatures known"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072041,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" for their towering height"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072157,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" and distinctive long neck"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072262,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"s. They are"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072362,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" the tallest land animals"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072477,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":", with heights ranging"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072583,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" from 14"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072688,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" to 19"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072795,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" feet (4."},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580072911,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"3 to 5"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073015,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":".8 meters)."},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073115,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" Males, called"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073223,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" bulls, are typically"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073334,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" taller and heavier than"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073443,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" females (cows"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073547,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"). Their long neck"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073656,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"s allow them to"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073811,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" reach leaves, flowers"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073876,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":", and fruits high"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580073980,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" up in trees,"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074092,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" especially from their preferred"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074193,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" food source, the"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074303,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" acacia tree.\n\n"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074413,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"These animals are native"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074514,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" to Africa and are"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074628,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" commonly found in sav"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074730,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"annas, grass"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074837,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"lands, and open"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580074945,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" woodlands. Gir"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075060,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"affes live in"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075162,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" loose social groups,"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075272,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" often mingling with"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075383,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" other herbivores"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075490,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" like zebras and"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075598,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" antelopes."},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075700,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" They are generally peaceful"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075804,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" but can defend themselves"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580075910,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" with powerful kicks if"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076020,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" threatened by predators such"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076137,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" as lions or hy"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076240,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"enas.\n\nOne of"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076380,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" the most unique traits"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076447,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" of giraffes"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076560,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" is their spotted coat"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076666,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" pattern, which is"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076774,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" unique to each individual"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076882,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":", much like a"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580076993,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" human fingerprint. They"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077100,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" also have a specialized"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077202,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" cardiovascular system to manage"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077312,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" blood flow due to"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077418,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" their heightâ��especially"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077525,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" when lowering their heads"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077632,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" to drink water."},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077742,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" Giraffes only"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077848,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" need to drink water"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580077956,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" occasionally, as they"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078068,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" obtain most of their"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078172,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" moisture from the plants"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078281,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" they consume.\n\nTheir"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078390,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" social behavior and communication"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078504,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" are also intriguing."},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078598,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" Giraffes communicate"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078707,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" using low-frequency sounds"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078816,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" that are often in"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580078922,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"audible to human"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079035,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" ears. Additionally,"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079142,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" they engage in a"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079250,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" behavior called \"neck"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079356,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"ing,\" where males"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079464,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" swing their necks"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079568,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" to compete for dominance"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079675,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" or mates.\n\nLet"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079786,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" me know if you"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580079886,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":"'d like to explore"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580080002,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" any specific aspect of"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580080107,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" giraffes in"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580080140,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":null,"delta":{"content":" more detail!"},"stop_reason":null}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580080150,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":"stop","delta":{"role":"assistant","content":""},"stop_reason":"stop"}]}
+
+data: {"id":"id_comqjiusZjAoyuXlh","model":"asi1-mini","created":1740580080150,"conversation_id":null,"tool_thought":[],"choices":[{"index":0,"finish_reason":"stop","delta":{"role":"assistant","content":""},"stop_reason":"stop"}],"usage":{"prompt_tokens":435,"completion_tokens":391,"total_tokens":826}}
+
+data: [DONE]
+
+```

@@ -1,81 +1,29 @@
-import { Callout } from 'nextra/components'
-import { ImageByTheme } from "../../components/mdx"
-import PackageVersion from '../../components/package-version'
-import communication from '../../content/images/concepts/tech/I2.svg';
+# Welcome to ASI1 Documentation
 
-# Agents - uAgents Framework
+## What is ASI1?
 
-## Introduction
+ASI1 LLM represents a significant advancement as the world's first Web3-native Large Language Model (LLM) designed specifically for agentic AI. Unlike general-purpose LLMs, ASI1 LLM is optimized for the complex interactions and autonomous decision-making required by AI agents operating within a decentralized environment. This allows for nuanced understanding, context-aware responses, and secure operation within the Web3 ecosystem. Its integration with the ASI wallet, powered by the $FET token, further strengthens its connection to the decentralized world, enabling seamless and secure transactions and interactions within the Fetch.ai network.
 
-The **uAgents Framework** is a lightweight library designed to facilitate the development of decentralized **Agents**. Agents in a multi-agent system can communicate with any, and all agents in the system to solve problems, execute tasks and transact.
+A key innovation of ASI1 family of LLMs lies in its advanced reasoning capabilities, enabling next-level adaptive reasoning and context-aware decision-making. This focus on agentic AI allows it to excel at complex tasks requiring autonomous operation. This heralds a new era of intelligent applications within Web3, paving the way for advancements in areas like DeFi, supply chain management, and personalized AI assistants, unlocking the potential of autonomous agents operating within a decentralized framework.
 
-    <Callout type="info" emoji="ℹ️">
-      Head over to the [uagents package](https://pypi.org/project/uagents/) to download it and start developing your Agents!
+## Key Features
 
-      Current version of the uAgents package is <PackageVersion packageName="uagents" packageType="pypi" />.
-    </Callout>
+ASI1 is a cutting-edge language model designed to think, reason, and act autonomously in complex environments. Inspired by agentic AI principles, ASI1 provides highly adaptive, goal-driven, and context-aware responses, making it an ideal tool for developers, researchers, and enterprises looking to integrate next-generation AI capabilities.
 
+- **Agentic Reasoning** – ASI1 can autonomously plan, execute, and adapt its approach based on evolving inputs and goals.
+- **Natural Language Understanding** – ASI1 is highly proficient in understanding and generating human-like text across multiple domains. 
+- **Multi-Step Task Execution** – Unlike traditional LLMs, ASI1 can handle multi-step, goal-oriented tasks without constant user intervention. 
+- **Contextual Memory** – Retains and utilizes contextual memory for longer, more coherent interactions. 
+- **API-Driven Integration** – Easily integrate ASI1 into your applications with a powerful API.
 
-### Getting into Agents
+## Getting Started
 
-Agents are programs designed to operate freely and communicate with whomever they're programmed to. Agents can connect, search, and transact in order to create dynamic markets, and they can be programmed to interact both within their environment and with other agents in the network. Because they're siloed, and decentralized they can safely accomplish particular activities and objectives without requiring human participation. We have a very simple guide in our documentation that gets you started on building an agent to be part [of the network](/docs/getting-started/create).
+Sign up and obtain API Key.
 
+1. Create an account on the ASI1 Developer Portal.
+2. Retrieve your unique API key for authentication
 
-At the simplest level, and agent would work as follows: 
+## Current model
 
-<ImageByTheme
-  darkSrc={communication}
-  lightSrc={communication}
-  alt="HighLevel-Diagram"
-/>
+    `"asi1-mini"`
 
-
-Of course, many agents in the above workflow can come together to become multi-agents workflows, where single Agents call one another to complete a task. Agents that you design could be programmed to contact known agents, whereas in a dynamic marketplace you may need an agent that you haven't created, searching and interacting with that agent may be the more optimal strategy.
-
-
-A simple Agent using the `uagents` library could be: 
-
-```py copy
-from uagents import Agent, Context, Model
- 
-agent = Agent(name="concept", seed="secret_seed_phrase_concept", endpoint="127.0.0.1", port="8001")
-
-class Message(Model):
-    message : str
-
- 
-@agent.on_message(model=Message)
-async def print_message(ctx: Context, msg : Message):
-    ctx.logger.info(f"Message received: {msg.message}")
- 
-if __name__ == "__main__":
-    agent.run()
-```
-
-This Agent defines its communication method as receiving any Object of `Class Message`, with a value for `message` of type `string`. You can see how this agent behaves, and how to extend this in our guides
-
-
-Agents are lightweight programs that can be inserted to existing systems with the ability to simplify the way we see complicated systems. As an example, supply chain management could deploy Agents using the uAgents Framework to improve operations at various stages. Demand forecasting, inventory control, logistics optimization, supplier relationships monitoring, quality control and risk mitigation in all areas can be done with their help. Agents could transform supply chain operations by increasing efficiency, reducing costs, improving accuracy and providing real-time visibility.
-
-You can view the source code for an Agent that monitors inventory levels in [our examples](https://github.com/fetchai/uAgent-Examples/blob/main/3-applications/inventory-monitoring/src/main.py)
-
-Agents thrive on IoT devices such as Raspberry Pi, and there are some great examples of multi-agent simulations using Agents on Raspberry Pi available on [Github](https://github.com/Agents-Lab/sensor-agent).
-
-
-#### LLMs
-
-Agents can wrap and orchestrate LLMs to create personalized Agents for any task. With the rise of Large Language Models (LLMs) and AI-related products, autonomous intelligent Agents have become the link between these models and tools. They are revolutionizing the way we solve problems, make decisions and collaborate with each other.
-
-Integrating LLMs into an Agent is relatively trivial, [we have a guide for that too](/docs/guides/langchain_agent).
-
-
-### Getting started with Agent development!
-
-Visit the [GitHub repository](https://github.com/fetchai/uAgents) to see the source code for uAgents, and to keep up-to-date with any update made to the uAgents Framework.
-
-From there, view the examples on uAgents repository, or start reading our guides, we'd recommend starting with [agent to agent communication](/docs/getting-started/communication).
-
-
-### Agentverse.ai
-
-Fetch.ai has invested heavily into a toolset to help you build and deploy agents with ease. Once you're familiar with uAgents, checkout [Agentverse](https://agentverse.ai/) to host your Agents in the cloud.
