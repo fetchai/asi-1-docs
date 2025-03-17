@@ -1,0 +1,15 @@
+.next
+node_modules
+.DS_Store
+.idea/
+.env
+.history/
+.env.local
+cleanup.py
+
+
+
+#local api testings
+poetry.lock
+pyproject.toml
+api.py
