@@ -1,5 +1,11 @@
 # Chat completion example
-A very simple example of how to get a chat completion with the asi1-mini model.
+A very simple example of how to get a chat completion with the `asi1-mini` model.
+
+The Chat Completion API enables developers to interact with the `asi1-mini` model by sending messages and receiving AI-generated responses. Designed for natural language understanding and multi-step reasoning, this API allows for contextual awareness and adaptive interactions, making it a powerful tool for autonomous [Agents](https://fetch.ai/docs/guides/agents/getting-started/whats-an-agent) and Web3 applications.
+
+By sending a structured conversation history to the `chat/completions` endpoint, you can generate responses tailored to the given context. The API supports both standard and streaming responses, providing real-time interaction when needed. Parameters such as `temperature` allow for fine-tuned control over response variability, ensuring the model behaves as expected in different scenarios.
+
+The following example demonstrates how to make a basic API request to ASI1 for chat completion.
 
 ## Code
 
@@ -34,7 +40,9 @@ print(response.text)
 
 ```
 
-You can run this by typing `python demo.py`. You may need to install requests library to your environment for this to work, you can do that with `pip install requests`.
+You can run this by typing `python demo.py`. 
+
+You may need to first install `requests` library to your environment for this to work; you can do that with: `pip install requests`.
 
 ## Output
 
