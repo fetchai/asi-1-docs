@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 import { CodeBlock as Codegroup } from "./code";
@@ -28,6 +28,7 @@ interface PropertyType {
   type: string;
   description: string;
   required?: boolean;
+  nestedChildren?: { name: string; type: string; required?: boolean; description: ReactNode }[];
 }
 
 const CurlCodeTab: React.FC<{
@@ -201,6 +202,7 @@ export const ApiRequestResponseCombined: React.FC<{
                     name={property.name}
                     required={property.required}
                     type={property.type}
+                    nestedChildren={property.nestedChildren}
                   >
                     {property.description}
                   </Property>
@@ -336,22 +338,22 @@ export const CodeView: React.FC<{
 
   return (
     <div className="flex flex-col gap-12 blocks-margin sticky top-24 self-start w-full xl:w-[50%]">
-        <Codegroup
-          hasCopy={true}
-          codeBlocks={[
-            {
+      <Codegroup
+        hasCopy={true}
+        codeBlocks={[
+          {
 
-              filename: "Python",
-              component: (
-                <PythonCodeTab
-                    method='GET'
-                    samplePayload={props?.samplePayload}
-                />
-              ),
+            filename: "Python",
+            component: (
+              <PythonCodeTab
+                method='GET'
+                samplePayload={props?.samplePayload}
+              />
+            ),
 
-            },
-          ]}
-        />
+          },
+        ]}
+      />
     </div>
   );
 };
