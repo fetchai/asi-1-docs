@@ -69,11 +69,13 @@ export function Property({
   name,
   type,
   required,
+  nestedChildren,
   children,
 }: {
   name: string;
   type: string;
-  required: boolean;
+  required?: boolean;
+  nestedChildren?: { name: string; type: string; required?: boolean; description: ReactNode }[];
   children: ReactNode;
 }) {
   return (
@@ -97,13 +99,29 @@ export function Property({
         )}
 
         <dt className="sr-only">Description</dt>
-        <dd className="w-full flex-none [&gt;:first-child]:mt-0 [&gt;:last-child]:mb-0 dark:text-white-60">
+        <dd className="w-full flex-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 dark:text-white-60">
           {children}
         </dd>
       </dl>
+
+      {nestedChildren && nestedChildren.length > 0 && (
+        <ul className="pl-4 mt-2 ml-4 border-l border-zinc-400 dark:border-white-40">
+          {nestedChildren.map((child) => (
+            <Property
+              key={child.name}
+              name={child.name}
+              type={child.type}
+              required={child.required}
+            >
+              {child.description}
+            </Property>
+          ))}
+        </ul>
+      )}
     </li>
   );
 }
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

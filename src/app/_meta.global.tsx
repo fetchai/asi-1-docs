@@ -1,7 +1,7 @@
-import {useMDXComponents} from '../../mdx-components'
+import { useMDXComponents } from '../../mdx-components'
 
 // eslint-disable-next-line react-hooks/rules-of-hooks -- isn't react hook
-const {code: Code} = useMDXComponents()
+const { code: Code } = useMDXComponents()
 
 export default {
     index: {
@@ -37,14 +37,18 @@ export default {
                 href: '/docs/core/link-account',
                 title: 'Link Account'
             },
-
+            _apis: {
+                type: 'separator',
+                title: 'Api Reference'
+            },
+            'create-chat-completion': {
+                href: "/docs/core/apis/create-chat-completion",
+                title: "Create Chat Completion"
+            },
             core: {
                 display: 'hidden'
             },
-
         }
-
-
     },
     refs: {
         type: 'page',
