@@ -177,7 +177,7 @@ export const ApiRequestResponseCombined: React.FC<{
   return (
     <div className="flex flex-col justify-between gap-6 xl:flex-row col-container height-adjust">
       {/* Left column: request + response doc */}
-      <div>
+      <div className="w-1/2">
         <Row>
           <div className="flex text-base">
             <div className="items-center mb-4 code">
@@ -237,7 +237,7 @@ export const ApiRequestResponseCombined: React.FC<{
         </div>
       </div>
 
-      <div className="flex flex-col gap-12 blocks-margin sticky top-24 self-start w-full xl:w-[50%]">
+      <div className="flex flex-col gap-12 blocks-margin sticky top-24 self-start w-1/2 xl:w-[50%]">
         <Codegroup
           hasCopy={true}
           codeBlocks={[
@@ -327,33 +327,3 @@ export const ApiEndpointRequestResponse: React.FC<{
       />
     );
   };
-
-
-export const CodeView: React.FC<{
-  samplePayload?: unknown;
-}> = (props) => {
-  const {
-    samplePayload
-  } = props;
-
-  return (
-    <div className="flex flex-col gap-12 blocks-margin sticky top-24 self-start w-full xl:w-[50%]">
-      <Codegroup
-        hasCopy={true}
-        codeBlocks={[
-          {
-
-            filename: "Python",
-            component: (
-              <PythonCodeTab
-                method='GET'
-                samplePayload={props?.samplePayload}
-              />
-            ),
-
-          },
-        ]}
-      />
-    </div>
-  );
-};

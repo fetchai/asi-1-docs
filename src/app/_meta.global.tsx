@@ -41,6 +41,10 @@ export default {
                 type: 'separator',
                 title: 'Api Reference'
             },
+            'introduction': {
+                href: "/docs/core/apis/introduction",
+                title: "Introduction"
+            },
             'create-chat-completion': {
                 href: "/docs/core/apis/create-chat-completion",
                 title: "Create Chat Completion"
@@ -49,26 +53,5 @@ export default {
                 display: 'hidden'
             },
         }
-    },
-    refs: {
-        type: 'page',
-        title: 'References',
-        items: {
-
-            index: {
-                "href": "/refs/api/intro",
-                "title": "Introduction"
-            },
-
-            "chat-completion-example": {
-                "href": "/refs/api/chat-completion-example",
-                "title": "Create chat completion"
-            },
-
-
-            api: {
-                display: 'hidden'
-            },
-        },
     }
 }

@@ -48,7 +48,7 @@ export default async function RootLayout({ children }) {
       <body id="modal-root" >
         <OSProvider>
         <Layout
-          banner={<Banner storageKey="Nextra 2">NEW FEATURE YAYA</Banner>}
+          // banner={<Banner storageKey="Nextra 2">NEW FEATURE YAYA</Banner>}
           navbar={navbar}
           footer={<Footer>{new Date().getFullYear()} © Fetch.ai.</Footer>}
           editLink="Edit this page on GitHub"

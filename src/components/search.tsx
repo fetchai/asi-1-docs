@@ -20,7 +20,7 @@ const searchClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_API_KEY
 );
 
-const agentverseIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_AGENTVERSE;
+const agentverseIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_ASI;
 const fetchIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_FETCH;
 const inputId = "search-input";
 
