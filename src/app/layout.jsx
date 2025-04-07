@@ -13,7 +13,7 @@ const lexend = Lexend({ subsets: ['latin'] })
 export const metadata = {
   metadataBase: new URL('https://agentverse.ai/docs'),
   title: {
-    template: '%s - Nextra'
+    template: '%s'
   },
   description: 'ASI1/docs',
   applicationName: 'ASI1/docs',

@@ -1,0 +1,203 @@
+# building a microservice utilising ASI-1
+
+## Introduction
+LLM Assistants are everywhere, and building one with ASI-1 couldn't be simpler.
+
+## Installation
+
+    - head over to as1.ai, and [create an api key ](https://docs.asi1.ai/docs/getting-api-key)
+    - make sure you have [Flask installed](https://pypi.org/project/Flask/)
+    - make sure you have [Pydantic installed](https://pypi.org/project/pydantic/)
+
+## Server
+Create new file called `simple_server.py` and copy the below code in and save.
+
+```py copy filename="simple_server.py"
+
+from flask import Flask, request, jsonify
+from pydantic import BaseModel, ValidationError
+import json
+import requests
+
+app = Flask(__name__)
+
+
+class QuestionRequest(BaseModel):
+    question: str
+
+
+class ResponseObject(BaseModel):
+    response: str
+
+
+@app.route('/ask', methods=['POST'])
+def ask():
+    try:
+        question_data = QuestionRequest(**request.json)
+
+        HEADERS = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'bearer {ASI_KEY_HERE}'
+        }
+
+        URL = "https://api.asi1.ai/v1/chat/completions"
+
+        MODEL = "asi1-mini"
+
+        payload = json.dumps({
+            "model": MODEL,
+            "messages": [
+                {
+                    "role": "user",
+                    "content": question_data.question
+                }
+            ],
+            "temperature": 0,
+            "stream": False,
+            "max_tokens": 0
+        })
+
+        response = requests.request("POST", URL, headers=HEADERS, data=payload)
+
+        return jsonify(ResponseObject(response=response.json()["choices"][0]["message"]["content"]).model_dump())
+
+    except ValidationError as e:
+        return jsonify({"error": e.errors()}), 400
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+```
+
+The above is a simple rest endpoint example, we assume you know how to use Flask, so let's just get into the extras:
+
+```py copy filename="_"
+class QuestionRequest(BaseModel):
+    question: str
+
+class ResponseObject(BaseModel):
+    response: str
+```
+
+We define two objects that represent the JSON object we receive, and the JSON object we return.
+
+inside `/ask`
+
+```py copy filename="_"
+@app.route('/ask', methods=['POST'])
+def ask():
+```
+
+We create our call to ASI-1:
+
+```py copy filename="_"
+HEADERS = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'bearer {ASI_KEY_HERE}'
+}
+
+URL = "https://api.asi1.ai/v1/chat/completions"
+
+MODEL = "asi1-mini"
+
+payload = json.dumps({
+    "model": MODEL,
+    "messages": [
+        {
+            "role": "user",
+            "content": question_data.question
+        }
+    ],
+    "temperature": 0,
+    "stream": False,
+    "max_tokens": 5
+})
+```
+
+
+Our payload is simple with only a few things to know:
+
+`messages[n]["role"]` - in a chat based system, always give the role of user, then the AI will respond as the "teacher".
+
+`temperature` - the lower this is, the less random, greate for strict Q&A.
+
+`stream` - either returns the response in one go, or partially as the AI reasons. In this example we set it to False,
+so the response is returned in one.
+
+`max_tokens` - how much you are prepared to pay for the response.
+
+Finally, we return the response to the user.
+
+`
+return jsonify(ResponseObject(response=response.json()["choices"][0]["message"]["content"]).model_dump())
+`
+
+For clarity, here is the output of `response.json()` :
+
+```json cp filename="_"
+
+{
+  'model': 'asi1-mini',
+  'id': 'id_g04OXB7PVmubCj8pY',
+  'executable_data': [],
+  'conversation_id': None,
+  'thought': [
+    'The user is asking for the capital of France. This is a straightforward question, and the answer is well-known and verifiable within the knowledge cutoff date. No complex reasoning or steps are needed here—just provide the correct and concise answer.'
+  ],
+  'tool_thought': [],
+  'choices': [
+    {
+      'index': 0,
+      'finish_reason': 'stop',
+      'message': {
+        'role': 'assistant',
+        'content': 'The capital of France is **Paris**.'
+      }
+    }
+  ],
+  'usage': {
+    'prompt_tokens': 44,
+    'completion_tokens': 65,
+    'total_tokens': 109
+  }
+}
+```
+
+
+Let's start the server with `python app.py`
+
+The server will start on http://127.0.0.1:5000/.
+
+## Testing
+
+Let's curl a request:
+
+
+```bash copy filename="example"
+curl -X POST http://127.0.0.1:5000/ask \
+     -H "Content-Type: application/json" \
+     -d '{"question": "What is the capital of France?"}'
+```
+
+
+and our response:
+
+```bash cp filename="response"
+curl -X POST http://127.0.0.1:5000/ask \
+     -H "Content-Type: application/json" \
+     -d '{"question": "What is the capital of France?"}'
+{
+  "response": "The capital of France is Paris."
+}
+```
+
+## Next steps
+
+That's all that is required for a Flask server to use ASI-1. We hope this example gives you the information you need
+to build some incredible applications and microservices utilising ASI-1.
+
+For any additional questions, the Team is waiting for you on [Discord](https://discord.gg/fetchai) and [Telegram](https://t.me/fetch_ai) channels.
