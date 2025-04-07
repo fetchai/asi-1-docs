@@ -49,7 +49,23 @@ export default {
                 href: "/docs/core/apis/create-chat-completion",
                 title: "Create Chat Completion"
             },
+
+            _examples: {
+                type: 'separator',
+                title: 'Examples'
+            },
+            'Flask': {
+                href: "/docs/examples/python",
+                title: "Flask"
+            },
+            'uAgents': {
+                href: "/docs/examples/uagents",
+                title: "uAgents"
+            },
             core: {
+                display: 'hidden'
+            },
+            examples: {
                 display: 'hidden'
             },
         }
