@@ -11,7 +11,7 @@ import { OSProvider } from '../contexts/os-provider'
 const lexend = Lexend({ subsets: ['latin'] })
 
 export const metadata = {
-  metadataBase: new URL('https://agentverse.ai/docs'),
+  metadataBase: new URL('https://docs.asi1.ai/docs'),
   title: {
     template: '%s'
   },
@@ -48,11 +48,10 @@ export default async function RootLayout({ children }) {
       <body id="modal-root" >
         <OSProvider>
         <Layout
-          // banner={<Banner storageKey="Nextra 2">NEW FEATURE YAYA</Banner>}
           navbar={navbar}
           footer={<Footer>{new Date().getFullYear()} © Fetch.ai.</Footer>}
           editLink="Edit this page on GitHub"
-          docsRepositoryBase="https://github.com/fetchai/uagents-docs"
+          docsRepositoryBase="https://github.com/fetchai/asi-1-docs/tree/main"
           sidebar={{ defaultMenuCollapseLevel: 1 }}
           pageMap={pageMap}
           search={<Search />}
