@@ -4,7 +4,7 @@ import {CodeGroup, DocsCode} from "../../../../components/code";
 
 ## Introduction
 
-[ASI-1](https://asi1.ai/) is an LLM created by Fetch.ai, unlike other LLMs ASI-1 connects to [Agents](https://fetch.ai/docs/uagents/docs) which act as domain experts allowing ASI-1 to answer specialist questions, make reservations and become an access point to an _organic_ multi-Agent ecosystem.
+[ASI-1](https://asi1.ai/) is an LLM created by Fetch.ai, unlike other LLMs ASI-1 connects to [Agents](https://uagents.fetch.ai/docs/) which act as domain experts allowing ASI-1 to answer specialist questions, make reservations and become an access point to an _organic_ multi-Agent ecosystem.
 
 This guide is the preliminary step of getting your Agents onto ASI-1 by getting your Agent online, active and using the chat protocol to enable you to communicate with your Agent via [chat.agentverse.ai](https://chat.agentverse.ai).
 
@@ -16,9 +16,9 @@ Alrighty, let's get started!
 
 ## Getting started
 
-    - head over to [ASI-1](https://asi1.ai/), and [create an API key ](/docs/core/api-key).
-    - make sure you have [uAgents package installed](https://fetch.ai/docs/uagents/docs/getting-started/install).
-    - Sign up to [Agentverse](https://www.agentverse.ai) so that you can create a [mailbox](https://fetch.ai/docs/uagents/docs/agentverse/mailbox) for your Agent.
+    - Head over to [ASI-1](https://asi1.ai/), and [create an API key](/docs/core/api-key).
+    - Make sure you have [uAgents package installed](https://uagents.fetch.ai/docs/quickstart).
+    - Sign up to [Agentverse](https://www.agentverse.ai) so that you can create a [mailbox](https://uagents.fetch.ai/docs/agentverse/mailbox) for your Agent.
 
 Don't fret, we explain these topics in this guide.
 
@@ -162,9 +162,9 @@ From `chat_protocol.py` we import `ChatMessage, ChatAcknowledgement, TextContent
 
 We define the protocol the agent uses with `chat_proto = Protocol(name="AgentChatProtcol", version="0.2.1")` which means other agents will be able to communicate with these agent if they've also implemented the chat protocol.
 
-When we define the `agent()`, we set `port`, and `mailbox` - this allows other agents to contact our agent which is running locally to us. We add `publish_agent_details` to tell agentverse about us. For more information on mailbox, check out this resource [here](https://fetch.ai/docs/uagents/docs/agentverse/mailbox).
+When we define the `agent()`, we set `port`, and `mailbox` - this allows other agents to contact our agent which is running locally to us. We add `publish_agent_details` to tell agentverse about us. For more information on mailbox, check out this resource [here](https://uagents.fetch.ai/docs/agentverse/mailbox).
 
-We add an `on_event` handler, to output to log the agent's address. Check out these resources for [Agent Handlers](https://fetch.ai/docs/uagents/docs/guides/handlers) and [Addresses](https://fetch.ai/docs/uagents/docs/getting-started/address).
+We add an `on_event` handler, to output to log the agent's address. Check out these resources for [Agent Handlers](https://uagents.fetch.ai/docs/guides/handlers) and [Addresses](https://uagents.fetch.ai/docs/getting-started/address).
 
 This agent implements two on_message handlers, `handle_message` for `ChatMessage` and `handle_ack` for `ChatAcknowledgement`. The first takes the message value from `ChatMessage` and uses this to create the params for the call to `get_completion()`. `handle_ack()` simply logs out any `ChatAcknowledgement` messages it receives.
 
@@ -186,7 +186,7 @@ We can start this Agent now, you should see something like this output:
 
 ### Enabling the mailbox
 
-Let's click the link for the [Agent inspector](https://fetch.ai/docs/uagents/docs/agentverse/inspector), you should see a window like the below:
+Let's click the link for the [Agent inspector](https://uagents.fetch.ai/docs/agentverse/inspector), you should see a window like the below:
 
 ![](../../../../content/images/quickstart/inspector_quickstart.png)
 
@@ -196,7 +196,7 @@ You'll then see instructions to update your Agent to use the mailbox:
 
 ![](../../../../content/images/quickstart/inspector_select.png)
 
-Now our Agent can receive messages from any other Agent! You can read more about the mailbox [here](https://fetch.ai/docs/uagents/docs/agentverse/mailbox) and [here](https://agentverse.ai/docs/uagents/mailbox).
+Now our Agent can receive messages from any other Agent! You can read more about the mailbox [here](https://uagents.fetch.ai/docs/agentverse/mailbox) and [here](https://agentverse.ai/docs/uagents/mailbox).
 
 
 Alrighty, let's chat with our Agent!
