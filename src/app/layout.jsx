@@ -43,22 +43,37 @@ export default async function RootLayout({ children }) {
   )
   const pageMap = await getPageMap()
   return (
-    <html className={lexend.className} lang="en" dir="ltr" suppressHydrationWarning>
-      <Head faviconGlyph="✦" />
-      <body id="modal-root" >
-        <OSProvider>
+      <html className={lexend.className} lang="en" dir="ltr" suppressHydrationWarning>
+      <head>
+        <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MGNF8Z9K');`
+            }}
+        />
+      </head>
+      <body id="modal-root">
+      {/* Google Tag Manager (noscript) */}
+      <noscript>
+        <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MGNF8Z9K"
+            height="0"
+            width="0"
+            style={{display: 'none', visibility: 'hidden'}}
+        ></iframe>
+      </noscript>
+      <OSProvider>
         <Layout
-          navbar={navbar}
-          footer={<Footer>{new Date().getFullYear()} © Fetch.ai.</Footer>}
-          editLink="Edit this page on GitHub"
-          docsRepositoryBase="https://github.com/fetchai/asi-1-docs/tree/main"
-          sidebar={{ defaultMenuCollapseLevel: 1 }}
-          pageMap={pageMap}
-          search={<Search />}
+            navbar={navbar}
+            footer={<Footer>{new Date().getFullYear()} © Fetch.ai.</Footer>}
+            editLink="Edit this page on GitHub"
+            docsRepositoryBase="https://github.com/fetchai/asi-1-docs/tree/main"
+            sidebar={{defaultMenuCollapseLevel: 1}}
+            pageMap={pageMap}
+            search={<Search/>}
         >
           {children}
         </Layout>
-        </OSProvider>
+      </OSProvider>
       </body>
     </html>
   )
