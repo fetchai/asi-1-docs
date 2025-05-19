@@ -377,3 +377,12 @@ hr{
 html.dark :is(h2, h3, h4, h5) {
   color: white !important;
 }
+
+header {
+  background : white;
+}
+
+html.dark :is(header) {
+  background: #404040;
+}
+

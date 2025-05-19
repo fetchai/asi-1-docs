@@ -20,8 +20,7 @@ const searchClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_API_KEY
 );
 
-const agentverseIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_ASI;
-const fetchIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_FETCH;
+const asiIndex = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_ASI;
 const inputId = "search-input";
 
 export function Search() {
@@ -46,7 +45,7 @@ export function Search() {
     }, []);
 
     return (
-        <InstantSearch searchClient={searchClient} indexName={agentverseIndex} routing insights>
+        <InstantSearch searchClient={searchClient} indexName={asiIndex} routing insights>
             <div className="flex items-center gap-3 bg-[#EDEDED] input-inner-nav input-hover search-bar px-2 rounded-md">
                 <input
                     id={inputId}
@@ -67,15 +66,8 @@ export function Search() {
 
                     <div className="h-[660px] algolia-results overflow-y-auto">
                         <section>
-                            <h2 className="px-4 py-2 text-lg font-semibold text-gray-700">Agentverse Docs</h2>
-                            <Index indexName={agentverseIndex}>
-                                <Configure hitsPerPage={10} />
-                                <Results />
-                            </Index>
-                        </section>
-                        <section className="mt-6">
-                            <h2 className="px-4 py-2 text-lg font-semibold text-gray-700">Fetch Docs</h2>
-                            <Index indexName={fetchIndex}>
+                            <h2 className="px-4 py-2 text-lg font-semibold text-gray-700">ASI-1 Docs</h2>
+                            <Index indexName={asiIndex}>
                                 <Configure hitsPerPage={10} />
                                 <Results />
                             </Index>
