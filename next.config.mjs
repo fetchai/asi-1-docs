@@ -50,26 +50,6 @@ export default withNextra({
         source: "/guides/ai-engine-sdk/python",
         destination: "/docs",
         permanent: true
-      },
-      {
-        source: "",
-        destination: "/docs",
-        permanent: true
-      },
-      {
-        source: "",
-        destination: "/docs",
-        permanent: true
-      },
-      {
-        source: "",
-        destination: "/docs",
-        permanent: true
-      },
-      {
-        source: "",
-        destination: "/docs",
-        permanent: true
       }
     ]
   }
