@@ -51,6 +51,11 @@ export default withNextra({
         destination: "/docs",
         permanent: true
       }
+      {
+        source: "/guides/fetchai-sdk/quickstart",
+        destination: "/docs",
+        permanent: true
+      }
     ]
   }
 })
