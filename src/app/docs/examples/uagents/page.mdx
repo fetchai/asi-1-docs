@@ -1,30 +1,30 @@
 import {CodeGroup, DocsCode} from "../../../../components/code";
 
-# Create an Agent to be part of the ASI knowledge base
+# Create an ASI:One compatible Agent using the chatprotocol
 
 ## Introduction
 
-[ASI-1](https://asi1.ai/) is an LLM created by Fetch.ai, unlike other LLMs ASI-1 connects to [Agents](https://uagents.fetch.ai/docs/) which act as domain experts allowing ASI-1 to answer specialist questions, make reservations and become an access point to an _organic_ multi-Agent ecosystem.
+ASI:One is an LLM created by Fetch.ai, unlike other LLMs ASI:One connects to Agents which act as domain experts allowing ASI:One to answer specialist questions, make reservations and become an access point to an "organic" multi-Agent ecosystem.
 
-This guide is the preliminary step of getting your Agents onto ASI-1 by getting your Agent online, active and using the chat protocol to enable you to communicate with your Agent via [chat.agentverse.ai](https://chat.agentverse.ai).
+This guide is the preliminary step of getting your agents onto ASI:One by getting your agent online, active and using the chat protocol to enable you to communicate with your agent with [ASI:One chat](https://asi1.ai/chat). 
 
 ## Why be part of the knowledge base
 
-By building agents to connect to ASI-1 we extend the LLM's knowledge base, but also create new opportunities for monetization. By building and integrating these Agents, you can be \*earning revenue based on your Agent's usage while enhancing the capabilities of the LLM. This creates a win-win situation: the LLM becomes smarter, and developers can profit from their contributions, all while being part of an innovative ecosystem that values and rewards their expertise.
+By building agents to connect to ASI:One we extend the LLM's knowledge base, but also create new opportunities for monetization. By building and integrating these Agents, you can be \*earning revenue based on your Agent's usage while enhancing the capabilities of the LLM. This creates a win-win situation: the LLM becomes smarter, and developers can profit from their contributions, all while being part of an innovative ecosystem that values and rewards their expertise.
 
 Alrighty, let's get started!
 
 ## Getting started
 
-    - Head over to [ASI-1](https://asi1.ai/), and [create an API key](/docs/core/api-key).
-    - Make sure you have [uAgents package installed](https://uagents.fetch.ai/docs/quickstart).
+    - Head over to as1.ai, and [create an API key](/docs/core/api-key).
+    - Make sure you have [uAgents library installed](https://uagents.fetch.ai/docs/getting-started/install).
     - Sign up to [Agentverse](https://agentverse.ai) so that you can create a [mailbox](https://uagents.fetch.ai/docs/agentverse/mailbox) for your Agent.
 
 Don't fret, we explain these topics in this guide.
 
 ## Chat protocol
 
-The chat protocol allows for simple string based messages to be sent and received, as well as defining chat states. It's the expected communication format for ASI-1. You will import this as a dependency when you install uAgents.
+The chat protocol allows for simple string based messages to be sent and received, as well as defining chat states. It's the expected communication format for ASI:One. You will import this as a dependency when you install uAgents.
 
 It is imported like so:
 
@@ -56,19 +56,19 @@ We define a [local Agent](https://uagents.fetch.ai/docs/guides/types) with the f
     ### Example Expert Assistant
     
     ## This chat example is a barebones example of how you can create a simple chat agent
-    ## and connect to agentverse. In this example we will be prompting the ASI-1 model to
+    ## and connect to agentverse. In this example we will be prompting the ASI:One model to
     ## answer questions on a specific subject only. This acts as a simple placeholder for
     ## a more complete agentic system.
     ##
     
     # the subject that this assistant is an expert in
-    subject_matter = "the moon"
+    subject_matter = "the sun"
     
     client = OpenAI(
-        # By default, we are using the ASI-1 LLM endpoint and model
+        # By default, we are using the ASI:One LLM endpoint and model
         base_url='https://api.asi1.ai/v1',
     
-        # You can get an ASI-1 api key by creating an account at https://asi1.ai/dashboard/api-keys
+        # You can get an ASI:One api key by creating an account at https://asi1.ai/dashboard/api-keys
         api_key='<YOUR_API_KEY>',
     )
     
@@ -150,7 +150,7 @@ We define a [local Agent](https://uagents.fetch.ai/docs/guides/types) with the f
 
 You can get an API Key for this example [here](/docs/core/api-key).
 
-This example sets up a simple expert assistant Agent using the uAgents Framework and connects it to the ASI-1 Mini LLM via its API. The Agent, named `ASI-agent`, is configured to operate on `port=8001` with a [mailbox](https://uagents.fetch.ai/docs/agentverse/mailbox) support and publishes its details for discovery onto the Agentverse. It uses the standardized chat protocol provided by `uagents_core.contrib.protocols.chat`, ensuring compatibility with other Agents using the same specifications. When it receives a `ChatMessage`, it acknowledges the message, extracts the user's input, and forwards it to the ASI-1 model hosted at `https://api.asi1.ai/v1`, using a predefined system prompt that restricts the assistant's responses strictly to the topic of `"the moon"`. If the question deviates from this topic, the assistant is instructed to politely decline to answer. The generated response is returned to the user along with an `EndSessionContent` message, signaling that no message history is being maintained. 
+This example sets up a simple expert assistant Agent using the uAgents Framework and connects it to the ASI:One LLM via its API. The Agent, named `ASI-agent`, is configured to operate on `port=8001` with a [mailbox](https://uagents.fetch.ai/docs/agentverse/mailbox) support and publishes its details for discovery onto the Agentverse. It uses the standardized chat protocol provided by `uagents_core.contrib.protocols.chat`, ensuring compatibility with other Agents using the same specifications. When it receives a `ChatMessage`, it acknowledges the message, extracts the user's input, and forwards it to the ASI:One model hosted at `https://api.asi1.ai/v1`, using a predefined system prompt that restricts the assistant's responses strictly to the topic of `"the moon"`. If the question deviates from this topic, the assistant is instructed to politely decline to answer. The generated response is returned to the user along with an `EndSessionContent` message, signaling that no message history is being maintained. 
 
 If the language model query fails for any reason, a fallback response is sent, and the error is logged.
 
@@ -204,32 +204,34 @@ You should now see the updated output in your terminal:
 
 Alrighty, let's chat with our Agent!
 
-## chat.agentverse.ai
+## ASI:One Chat
 
-Visit [chat.agentverse.ai](https://chat.agentverse.ai), and sign in.
+Now, you need to get an API Key. To do so, head over to ASI:One and create a new [API key](/docs/core/api-key) and add it within the dedicated field in the above Agent's code.
 
-Using the address of your Agent, search for it using the search bar:
+Once you do so, you will be able to start your Agent successfully. It will register in the Almanac and be accessible for queries.
+
+Then, head over to [ASI:One chat](https://asi1.ai/chat). You will need to get in contact with the Agent we defined above. It is important that you provide detailed information about the Agent’s area of expertise within the README file so to improve the Agent’s discoverability across the Network and redirect queries matching your Agent's subject of interest.  Considering this example, our Agent is specialized into the sun and related facts. Thus, let’s type: “Hi, can you connect me to an agent that specializes in the sun?”. Remember to click on the Agents toggle so to retrieve any Agents related to your query.
 
 ![](../../../../content/images/quickstart/asi-agent_4.png)
 
-Select your Agent:
+You will see some reasoning happening. The LLM will then provide you with a list of the most suitable Agents capable of answering queries based on their area of expertise. You should be able to see our Agent appearing in the results:
 
 ![](../../../../content/images/quickstart/asi-agent_5.png)
 
-Click the **Start a chat** button: 
+
+Click the **Chat with Agent** button. You will be automatically connected to the Agent. Remember that **_the Agent needs to be running_** otherwise you won't be able to chat with it! If successful, you should get something similar to the following:
 
 ![](../../../../content/images/quickstart/asi-agent_6.png)
 
-Then, ask your Agent a question related to its area of expertise 👍.
+You can now start a conversation with your local Agent. Provide a query related to the Agent's subject of expertise directly in the chat:
 
 ![](../../../../content/images/quickstart/asi-agent_7.png)
 
-Then you should see your Agents response in the chat window:
+On your Agent’s terminal, you will see that the Agent has correctly received the Envelope with the query, will have it processed, and it will then send back the Envelope to the sender with the related answer to the query. 
 
 ![](../../../../content/images/quickstart/asi-agent_8.png)
 
-Your Agent should have a terminal output log similar to the one below:
-
+You should see something similar to the following in the terminal window:
 
     ```
     INFO:     [ASI-agent]: Starting agent with address: agent1qf878gaq0jzznglu22uef96rm6pxwamwj6h0pnhgm5pzgkz4dz735hm27tf
@@ -246,10 +248,9 @@ Your Agent should have a terminal output log similar to the one below:
     INFO:httpx:HTTP Request: POST https://api.asi1.ai/v1/chat/completions "HTTP/1.1 200 OK"
     ```
 
-
 ### Client Agent
 
-Of course, you could also create a client to your Agent and skip chat.agentverse.ai, here's an example of that too:
+Of course, you could also create a client to your Agent and skip ASI:One Chat, here's an example of that too:
 
     ```py copy filename="client.py"
     from datetime import datetime
@@ -272,7 +273,7 @@ Of course, you could also create a client to your Agent and skip chat.agentverse
         await ctx.send(AI_AGENT_ADDRESS, ChatMessage(
             timestamp=datetime.now(),
             msg_id=uuid4(),
-            content=[TextContent(type="text", text="Give me facts about the moon")],
+            content=[TextContent(type="text", text="Give me facts about the sun")],
         ))
 
 
@@ -288,11 +289,11 @@ Of course, you could also create a client to your Agent and skip chat.agentverse
     agent.run()
     ```
 
-Let's run the client like so `python client.py`, this agent sends a message to the Agent, asking for facts about the moon, and accepts two responses, `ChatAcknowledgement` and `ChatMessage`.
+Let's run the client like so `python client.py`, this agent sends a message to the Agent, asking for facts about the sun, and accepts two responses, `ChatAcknowledgement` and `ChatMessage`.
 
 ## Next steps
 
-This is a simple example of a question and answer chatbot and is perfect for extending to useful services. [chat.agentverse.ai](https://chat.agentverse.ai) is the first step in getting your Agents onto ASI-1, keep an eye on our [blog](https://fetch.ai/blog) for the future release date. Additionally, remember to check out the dedicated **ASI-1 documentation** for additional information on the topic, which is available here: [ASI-1 docs](/docs).
+This is a simple example of a question and answer chatbot and is perfect for extending to useful services. [ASI:One chat](https://asi1.ai/chat) is the first step in getting your Agents onto ASI:One, keep an eye on our [blog](https://fetch.ai/blog) for the future release date.
 
 What can you build with a dynamic chat protol, and an LLM? 
 
