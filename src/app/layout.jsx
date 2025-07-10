@@ -15,11 +15,11 @@ export const metadata = {
   title: {
     template: '%s'
   },
-  description: 'ASI1/docs',
-  applicationName: 'ASI1/docs',
+  description: 'ASI:One/docs',
+  applicationName: 'ASI:One/docs',
   generator: 'Next.js',
   appleWebApp: {
-    title: 'ASI1 Docs'
+    title: 'ASI:One Docs'
   },
   other: {
     'msapplication-TileImage': '/ms-icon-144x144.png',
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }) {
     <Navbar
       logo={
         <div>
-          <b>ASI1/docs</b>{' '}
+          <b>ASI:One/docs</b>{' '}
         </div>
       }
       chatLink="https://discord.com/invite/fetchai"
